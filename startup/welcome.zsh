@@ -2,27 +2,48 @@
 # ║                          WELCOME MESSAGE                                     ║
 # ╚══════════════════════════════════════════════════════════════════════════════╝
 
-# Display system information on terminal startup
+# Pretty header with date/time
+echo
+echo "┌───────────────────────────────────────────────┐"
+echo "│   Welcome back, $USER!                       │"
+echo "│   $(date '+%A, %B %d %Y - %H:%M:%S')         │"
+echo "└───────────────────────────────────────────────┘"
+echo
+
+# System summary (fastfetch handles most eye candy)
 fastfetch
 
-# ┌──────────────────────────────────────────────────────────────────────────────┐
-# │                       BACKGROUND PROCESSES                                   │
-# └──────────────────────────────────────────────────────────────────────────────┘
+# Git overview: show uncommitted repos at a glance
+if command -v gitcheck >/dev/null 2>&1; then
+  echo
+  echo "📂 Repositories overview:"
+  gitcheck ~/Neoware/*/ ~/.config/*/ | grep -v "📁 not a git repo"
+fi
 
-# Auto-start Ollama server for local AI models (uncomment if needed)
-# echo "🤖 Starting Ollama server in background..."
-# nohup ollama serve </dev/null >/dev/null 2>&1 & disown
+# Pending Homebrew upgrades
+if command -v brew >/dev/null 2>&1; then
+  updates=$(brew outdated --quiet | wc -l | tr -d ' ')
+  if [ "$updates" -gt 0 ]; then
+    echo
+    echo "🍺 Homebrew: $updates packages can be upgraded (run 'brew upgrade')"
+  fi
+fi
 
-# ╔══════════════════════════════════════════════════════════════════════════════╗
-# ║                            CONFIGURATION END                                 ║
-# ║                    ~ Happy Coding & Terminal Life! ~                         ║
-# ╚══════════════════════════════════════════════════════════════════════════════╝
+# Conda environments (if installed)
+if command -v conda >/dev/null 2>&1; then
+  echo
+  echo "🐍 Conda environments:"
+  conda env list | grep -v "^#"
+fi
 
-# 💡 Pro Tips:
-# - Use 'zc' to edit this config and 'zs' to reload it
-# - Try 'hb_search' and 'hb_installed' for Homebrew package management
-# - Use 'gitcheck' to see status of all your repositories
-# - 'y' launches Yazi file manager with directory change integration
-# - 'lg' opens LazyGit for beautiful git operations
-# - Arduino development: 'ard-c' to compile, 'ard-u' to upload
-# - SketchyBar control: 'sb toggle/start/stop/restart/reload/status' 
+# Helpful footer
+echo
+echo "💡 Pro Tips:"
+echo "   zc   → edit config"
+echo "   zs   → reload config"
+echo "   hb_search / hb_installed → brew helper"
+echo "   gitcheck   → repo status overview"
+echo "   lg         → LazyGit TUI"
+echo "   y          → Yazi file manager"
+echo "   sb [cmd]   → SketchyBar control"
+echo
