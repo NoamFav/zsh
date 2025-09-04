@@ -2,20 +2,9 @@
 # ║                       SHELL ENHANCEMENT TOOLS                                ║
 # ╚══════════════════════════════════════════════════════════════════════════════╝
 
-# TheFuck - Intelligent command correction
-eval "$(thefuck --alias)"
-
-# fzf - Fuzzy finder for commands, files, and history
+command -v thefuck >/dev/null 2>&1 && eval "$(thefuck --alias)"
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-
-# ghcup - Haskell toolchain manager
 [[ -f "$HOME/.ghcup/env" ]] && . "$HOME/.ghcup/env"
-
-# Oh My Posh - Beautiful, customizable prompt
-eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/config-theme.toml)"
-
-# Atuin - Enhanced shell history with sync capabilities
-eval "$(atuin init zsh)"
-
-# Zoxide - Smart directory jumping (replaces cd with intelligence)
-eval "$(zoxide init --cmd cd zsh)"
+command -v oh-my-posh >/dev/null 2>&1 && eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/config-theme.toml)"
+command -v atuin >/dev/null 2>&1 && eval "$(atuin init zsh)"
+command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init --cmd cd zsh)"
