@@ -23,3 +23,9 @@ alias nrdp="npm run deploy"             # Deploy project
 
 # Custom project scripts
 alias cmr='./run.sh'                    # Common run script
+
+
+alias ard-run='arduino-cli compile --fqbn adafruit:samd:adafruit_feather_m0 . \
+  && arduino-cli upload --fqbn adafruit:samd:adafruit_feather_m0 -p /dev/cu.usbmodem123201 . \
+  && arduino-cli board attach -p /dev/cu.usbmodem123201 --fqbn adafruit:samd:adafruit_feather_m0 . \
+  && arduino-cli monitor -p /dev/cu.usbmodem123201 -c baudrate=115200'
