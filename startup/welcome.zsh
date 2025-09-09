@@ -215,7 +215,7 @@ echo -e "${CYAN}└────────────────────�
 if command -v gitcheck >/dev/null 2>&1; then
     echo -e "${GREEN}📂 Active Repositories:${RESET}"
     echo -e "${DIM}─────────────────────${RESET}"
-    gitcheck ~/Neoware/*/ ~/.config/*/ 2>/dev/null | grep -v "📁 not a git repo" | head -10
+    gitcheck ~/Neoware/*/ ~/.config/*/ 2>/dev/null | grep -v "📁 not a git repo" | head -40
     echo
 fi
 
