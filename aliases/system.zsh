@@ -11,6 +11,7 @@ alias e='exit'                          # Quick exit
 alias f='fuck'                          # TheFuck command correction
 alias ff='fastfetch'                    # System information display
 alias of='onefetch'                     # Git repository information
+alias fucking='sudo'
 
 # File management shortcuts
 alias dh='diskutil eject HDD'           # Eject external drive
