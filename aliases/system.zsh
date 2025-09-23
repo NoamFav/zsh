@@ -22,3 +22,18 @@ alias nv='nvim'                         # Quick nvim launch
 alias zc="nv ~/.zshrc"                  # Edit ZSH configuration
 alias zs="source ~/.zshrc"              # Reload ZSH configuration
 alias omzc="nv ~/.oh-my-zsh"            # Edit Oh My Zsh configuration
+
+alias closeiterm="osascript - <<'EOF'
+tell application \"iTerm\"
+    if it is running then
+        set windowCount to count of windows
+        repeat with i from windowCount to 1 by -1
+            try
+                close window i
+            end try
+        end repeat
+    else
+        log \"iTerm is not running\"
+    end if
+end tell
+EOF"
