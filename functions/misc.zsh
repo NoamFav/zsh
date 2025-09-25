@@ -39,3 +39,15 @@ alias_web() {
         unalias web 2>/dev/null
     fi
 }
+
+# ┌──────────────────────────────────────────────────────────────────────────────┐
+# │                        ITERM2 FUNCTION CLOSE                                 │
+# └──────────────────────────────────────────────────────────────────────────────┘
+
+closeiterm() {
+  osascript -e 'if application id "com.googlecode.iterm2" is running then tell application id "com.googlecode.iterm2" to close (every window)'
+}
+
+quititerm() {
+  osascript -e 'if application id "com.googlecode.iterm2" is running then tell application id "com.googlecode.iterm2" to quit'
+}
