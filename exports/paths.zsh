@@ -28,3 +28,4 @@ export PATH="/Applications/Unity/Hub/Editor/6000.0.31f1/Unity.app/Contents/MacOS
 
 # Java Development Kit
 export JAVA_HOME=$(/usr/libexec/java_home -v 23)
+export PATH="/opt/homebrew/Cellar/perl/5.40.2/bin:$PATH"
