@@ -22,4 +22,4 @@ alias nv='nvim'                         # Quick nvim launch
 alias zc="nv ~/.zshrc"                  # Edit ZSH configuration
 alias zs="source ~/.zshrc"              # Reload ZSH configuration
 alias omzc="nv ~/.oh-my-zsh"            # Edit Oh My Zsh configuration
-
+alias line="pbpaste | wc -l"
