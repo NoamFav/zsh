@@ -3,9 +3,9 @@
 # ╚══════════════════════════════════════════════════════════════════════════════╝
 
 # Git workflow shortcuts
-alias q='auto_commit --only "${PWD##*/}"'                    # Quick commit current project
-alias qc='auto_commit --only "${PWD##*/}" --dir ~/.config'   # Quick commit config changes
-alias auto='auto_commit'                                     # Auto commit all projects
+alias q='autocommit --only "${PWD##*/}"'                    # Quick commit current project
+alias qc='autocommit --only "${PWD##*/}" --dir ~/.config'   # Quick commit config changes
+alias auto='autocommit'                                     # Auto commit all projects
 alias lg='lazygit'                                           # Beautiful git TUI
 
 # Project navigation
