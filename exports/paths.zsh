@@ -8,6 +8,7 @@ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"                       # Ruby
 export PATH="/opt/homebrew/opt/bison/bin:$PATH"                      # Bison parser generator
 export PATH="$HOME/go/bin:$PATH"                                     # Go binaries
 export PATH="$HOME/.local/bin:$PATH"                                 # Local user binaries
+export PATH="$HOME/Library/Python/3.12/bin:$PATH"
 
 # .NET Core Configuration
 export DOTNET_ROOT="/usr/local/share/dotnet"
