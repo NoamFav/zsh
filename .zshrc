@@ -31,7 +31,7 @@ ZSH_MODULES=(
   "external/conda"
   "external/tools"
   "external/completions"
-  "startup/welcome"
+ # "startup/welcome"
 )
 
 for module in "${ZSH_MODULES[@]}"; do
