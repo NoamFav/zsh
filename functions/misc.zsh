@@ -26,8 +26,9 @@ onelist() {
 # Project-specific web aliases mapping
 typeset -gA web_aliases=(
     "Psycho"     "https://noamfav.github.io/Psycho"
-    "Resume"     "https://noamfav.github.io/Resume" 
+    "Resume"     "https://noamfav.github.io/Resume"
     "bitvoyager" "https://noamfav.github.io/bitvoyager"
+    "NF-Software" "https://nf-software.com"
 )
 
 # Dynamic web alias based on current directory
