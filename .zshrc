@@ -27,7 +27,6 @@ ZSH_MODULES=(
   "functions/arduino"
   "functions/files"
   "functions/misc"
-  "functions/nf"
   "hooks/directory"
   "external/conda"
   "external/tools"
