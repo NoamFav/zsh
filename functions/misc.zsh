@@ -6,6 +6,7 @@
 _onefetch_chpwd() {
     if [[ -d .git ]]; then
         onefetch
+        ls
     fi
 }
 
