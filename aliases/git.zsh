@@ -16,7 +16,7 @@ alias nlp='cd ~/Neoware/NLP_project'    # Jump to NLP project
 alias github='open -a Safari "https://github.com/NoamFav"'  # Open GitHub profile
 
 alias apps='cd ~/Neoware/00-apps'
-alias web='cd ~/Neoware/01-websites'
+alias webs='cd ~/Neoware/01-websites'
 alias games='cd ~/Neoware/02-games'
 alias plugs='cd ~/Neoware/03-editor-plugins'
 alias study='cd ~/Neoware/04-coursework'
