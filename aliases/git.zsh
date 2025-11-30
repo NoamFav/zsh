@@ -3,9 +3,9 @@
 # ╚══════════════════════════════════════════════════════════════════════════════╝
 
 # Git workflow shortcuts
-alias q='autocommit --only "${PWD##*/}"'                    # Quick commit current project
-alias qc='autocommit --only "${PWD##*/}" --dir ~/.config'   # Quick commit config changes
-alias auto='autocommit'                                     # Auto commit all projects
+alias q='iskra --only "${PWD##*/}"'                    # Quick commit current project
+alias qc='iskra --only "${PWD##*/}" --dir ~/.config'   # Quick commit config changes
+alias auto='iskra'                                     # Auto commit all projects
 alias lg='lazygit'                                           # Beautiful git TUI
 
 # Project navigation
