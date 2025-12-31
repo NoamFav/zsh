@@ -47,3 +47,23 @@ repo() {
 
 # project tree quicklook
 ptree() { tree -L "${1:-2}" -d -I ".git"; }
+
+batcopy() {
+  local -a sel files
+  local f
+
+  sel=("${(@f)$(fzf -m --preview '[[ -d {} ]] && tree -L 2 {} || bat --color=always -- {}' )}")
+  (( ${#sel} == 0 )) && return
+
+  files=()
+  for f in "${sel[@]}"; do
+    if [[ -d "$f" ]]; then
+      files+=("$f"/*.*(N))
+    else
+      files+=("$f")
+    fi
+  done
+
+  (( ${#files} == 0 )) && return
+  bat --color=always -- "${files[@]}" 2>/dev/null | pbcopy
+}
