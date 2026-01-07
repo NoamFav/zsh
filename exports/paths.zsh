@@ -32,4 +32,5 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 23)
 export PATH="/opt/homebrew/Cellar/perl/5.40.2/bin:$PATH"
 
 export MANPATH="$HOME/.local/share/man:$MANPATH"
-
+export DXVK_LOG_LEVEL=none
+export WINEDLLOVERRIDES="d3d11,dxgi=n"
