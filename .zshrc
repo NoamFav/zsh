@@ -47,3 +47,6 @@ done
 # ║                            CONFIGURATION END                                 ║
 # ║    💡 Edit individual modules in ~/.config/zsh/ for specific changes         ║
 # ╚══════════════════════════════════════════════════════════════════════════════╝
+
+# Added by Iskra installer
+export PATH="$HOME/.local/bin:$PATH"
