@@ -4,6 +4,15 @@
 
 # Git workflow shortcuts
 alias i='iskra'
+alias is='iskra status'
+alias ie='iskra exec'
+alias iss='iskra sync'
+alias issa='iskra sync-all'
+alias il='iskra log'
+alias ii='iskra info'
+alias idi='iskra diff'
+alias ib='iskra branch'
+alias ig='iskra gh'
 alias ip='iskra pulse'                    # Quick commit current project
 alias auto='iskra'                                     # Auto commit all projects
 alias lg='lazygit'                                           # Beautiful git TUI
