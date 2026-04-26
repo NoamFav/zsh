@@ -3,6 +3,7 @@
 # ╚══════════════════════════════════════════════════════════════════════════════╝
 
 # Git workflow shortcuts
+alias i='iskra'
 alias ip='iskra pulse'                    # Quick commit current project
 alias auto='iskra'                                     # Auto commit all projects
 alias lg='lazygit'                                           # Beautiful git TUI
