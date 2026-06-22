@@ -9,6 +9,7 @@ export PATH="/opt/homebrew/opt/bison/bin:$PATH"                      # Bison par
 export PATH="$HOME/go/bin:$PATH"                                     # Go binaries
 export PATH="$HOME/.local/bin:$PATH"                                 # Local user binaries
 export PATH="$HOME/Library/Python/3.12/bin:$PATH"
+export DOCKER_CONFIG="$HOME/.dev/docker"
 
 # .NET Core Configuration
 export DOTNET_ROOT="/usr/local/share/dotnet"

@@ -3,7 +3,8 @@
 # ╚══════════════════════════════════════════════════════════════════════════════╝
 
 # Oh My Zsh configuration
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$HOME/.dev/oh-my-zsh"
+export ZSH_CUSTOM="$HOME/.dev/oh-my-zsh/custom"
 
 # Essential plugins for enhanced shell experience
 plugins=(
