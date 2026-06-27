@@ -23,7 +23,7 @@ ZSH_MODULES=(
   "aliases/git"
   "aliases/multimedia"
   "functions/homebrew"
-  "functions/git"
+  "functions/gh"
   "functions/arduino"
   "functions/files"
   "functions/misc"
@@ -31,7 +31,6 @@ ZSH_MODULES=(
   "external/conda"
   "external/tools"
   "external/completions"
- # "startup/welcome"
 )
 
 for module in "${ZSH_MODULES[@]}"; do
@@ -42,14 +41,6 @@ for module in "${ZSH_MODULES[@]}"; do
     echo "⚠️  Module not found: $module_file"
   fi
 done
-
-# ╔══════════════════════════════════════════════════════════════════════════════╗
-# ║                            CONFIGURATION END                                 ║
-# ║    💡 Edit individual modules in ~/.config/zsh/ for specific changes         ║
-# ╚══════════════════════════════════════════════════════════════════════════════╝
-
-# Added by Iskra installer
-export PATH="$HOME/.local/bin:$PATH"
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"

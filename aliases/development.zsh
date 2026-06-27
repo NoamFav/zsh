@@ -27,10 +27,3 @@ alias cmr='./run.sh'                    # Common run script
 # Whisper stream
 alias ws='whisper-stream -m ~/.models/whisper/ggml-large-v3-turbo.bin --step 1000 --length 5000 -vth 0.7 -t 8'
 
-
-alias ard-run='arduino-cli compile --fqbn adafruit:samd:adafruit_feather_m0 . \
-  && arduino-cli upload --fqbn adafruit:samd:adafruit_feather_m0 -p /dev/cu.usbmodem123201 . \
-  && arduino-cli board attach -p /dev/cu.usbmodem123201 --fqbn adafruit:samd:adafruit_feather_m0 . \
-  && arduino-cli monitor -p /dev/cu.usbmodem123201 -c baudrate=115200'
-
-alias coqui='~/.venvs/coqui311/bin/tts-server --model_name tts_models/en/vctk/vits'

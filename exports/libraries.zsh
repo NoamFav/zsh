@@ -10,7 +10,3 @@ export DYLD_LIBRARY_PATH="$HOME/Neoware/iris_initiative/third_party/porcupine/li
 export CPLUS_INCLUDE_PATH="/opt/homebrew/include:$CPLUS_INCLUDE_PATH"
 export CPLUS_INCLUDE_PATH="/opt/homebrew/include/onnxruntime:$CPLUS_INCLUDE_PATH"
 
-# Gurobi Optimization Suite
-export GUROBI_HOME="/Library/gurobi<version>"
-export PATH="${GUROBI_HOME}/bin:${PATH}"
-export LD_LIBRARY_PATH="${GUROBI_HOME}/lib:${LD_LIBRARY_PATH}"
