@@ -1,7 +1,3 @@
-# ╔══════════════════════════════════════════════════════════════════════════════╗
-# ║                           COMPLETION STYLING                                 ║
-# ╚══════════════════════════════════════════════════════════════════════════════╝
-
 # Configure ZSH completion styling
 zstyle ':completion:*' menu select                                    # Enable menu selection
 zstyle ':completion:*' group-name ''                                  # Group completions

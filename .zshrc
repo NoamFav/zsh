@@ -1,8 +1,3 @@
-# ╔══════════════════════════════════════════════════════════════════════════════╗
-# ║                           ZSH CONFIGURATION                                  ║
-# ║                        ~ Modular Terminal Setup ~                            ║
-# ╚══════════════════════════════════════════════════════════════════════════════╝
-
 export ZSH_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 [[ -d "$ZSH_CONFIG_DIR" ]] || mkdir -p "$ZSH_CONFIG_DIR"
 
@@ -17,20 +12,10 @@ ZSH_MODULES=(
   "core/oh-my-zsh"
   "core/completion"
   "exports/paths"
-  "exports/libraries"
   "aliases/system"
-  "aliases/development"
   "aliases/git"
-  "aliases/multimedia"
-  "functions/homebrew"
-  "functions/gh"
-  "functions/arduino"
   "functions/files"
-  "functions/misc"
-  "hooks/directory"
-  "external/conda"
   "external/tools"
-  "external/completions"
 )
 
 for module in "${ZSH_MODULES[@]}"; do
@@ -41,11 +26,3 @@ for module in "${ZSH_MODULES[@]}"; do
     echo "⚠️  Module not found: $module_file"
   fi
 done
-
-# pnpm
-export PNPM_HOME="$HOME/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-# pnpm end

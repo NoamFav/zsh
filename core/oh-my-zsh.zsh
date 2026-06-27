@@ -1,7 +1,3 @@
-# ╔══════════════════════════════════════════════════════════════════════════════╗
-# ║                           OH MY ZSH CONFIGURATION                            ║
-# ╚══════════════════════════════════════════════════════════════════════════════╝
-
 # Oh My Zsh configuration
 export ZSH="$HOME/.dev/oh-my-zsh"
 export ZSH_CUSTOM="$HOME/.dev/oh-my-zsh/custom"
@@ -20,4 +16,5 @@ plugins=(
     source "$HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh"
 
 # Initialize Oh My Zsh
-source "$ZSH/oh-my-zsh.sh"
+[[ -f "$ZSH/oh-my-zsh.sh" ]] && source "$ZSH/oh-my-zsh.sh"
+
