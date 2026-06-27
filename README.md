@@ -1,81 +1,95 @@
-# ZSH Modular Configuration
+# ZSH Configuration
 
-This directory contains a modular ZSH configuration that replaces the monolithic `.zshrc` file.
+A modular, macOS-focused Zsh configuration. The monolithic `.zshrc` is split into small, single-purpose modules that the loader sources in dependency order, so each piece of functionality lives in its own file and is easy to find, edit, or disable.
 
-## Directory Structure
+> **Note:** This config is written for **macOS**. It assumes Homebrew, and several modules use Mac-only tooling (`osascript`, `pbpaste`/`pbcopy`, `diskutil`, BSD `sed`). It will *load* on Linux thanks to `command -v` guards on most external tools, but the Mac-specific aliases and functions won't work there.
+
+## Structure
 
 ```
 ~/.config/zsh/
+├── .zshrc              # loader — sources all modules in order
 ├── aliases/
-│   ├── development.zsh  # Development tool aliases
-│   ├── git.zsh         # Git and project management
-│   ├── multimedia.zsh  # AI, music, and gaming aliases
-│   └── system.zsh      # System and file management aliases
+│   ├── development.zsh # compilers, npm, build tools
+│   ├── git.zsh         # iskra + project navigation
+│   ├── multimedia.zsh  # AI models, Apple Music, misc
+│   └── system.zsh      # ls/eza, editor shortcuts, system
 ├── core/
-│   ├── completion.zsh  # ZSH completion styling
-│   ├── environment.zsh # Environment variables and basic settings
-│   └── oh-my-zsh.zsh  # Oh My Zsh configuration
+│   ├── completion.zsh  # completion styling
+│   ├── environment.zsh # core env vars + zsh behavior
+│   └── oh-my-zsh.zsh   # Oh My Zsh + plugin list
 ├── exports/
-│   ├── libraries.zsh  # Library paths and dev environments
-│   └── paths.zsh      # PATH and development tool paths
+│   ├── libraries.zsh   # library/header paths (macOS)
+│   └── paths.zsh       # PATH management
 ├── external/
-│   ├── completions.zsh # Auto-completion setup
-│   ├── conda.zsh      # Conda initialization
-│   └── tools.zsh      # Shell enhancement tools
+│   ├── completions.zsh # python argcomplete hooks
+│   ├── conda.zsh       # conda init
+│   └── tools.zsh       # fzf, atuin, zoxide, etc. (guarded)
 ├── functions/
-│   ├── arduino.zsh    # Arduino development tools
-│   ├── files.zsh      # File management utilities
-│   ├── git.zsh        # Git repository management
-│   ├── homebrew.zsh   # Homebrew utilities
-│   └── misc.zsh       # Miscellaneous utilities
+│   ├── arduino.zsh     # arduino-cli compile/upload helpers
+│   ├── files.zsh       # yazi, batcopy, repo jumper
+│   ├── gh.zsh          # gh CLI completion
+│   ├── homebrew.zsh    # brew browser, sketchybar control
+│   └── misc.zsh        # onefetch, dynamic web aliases
 ├── hooks/
-│   └── directory.zsh  # Directory change hooks
-├── startup/
-│   └── welcome.zsh    # Welcome message and startup
-├── local.zsh          # Local customizations (not tracked)
-└── README.md          # This file
+│   └── directory.zsh   # chpwd hooks
+├── local.zsh           # machine-specific overrides (gitignored)
+└── README.md
 ```
 
-## Module Loading Order
+## Loading Order
 
-Modules are loaded in dependency order by the main `.zshrc` file:
+The loader (`.zshrc`) sources modules in dependency order: **core** (environment, Oh My Zsh, completion) → **exports** (PATH, libraries) → **aliases** → **functions** → **hooks** → **external** tools. Anything that defines values others depend on loads first.
 
-1. **Core modules** - Basic environment and Oh My Zsh
-2. **Exports** - PATH and library configurations  
-3. **Aliases** - Command shortcuts and replacements
-4. **Functions** - Custom shell functions
-5. **Hooks** - Directory change automation
-6. **External tools** - Third-party integrations
-7. **Startup** - Welcome messages and final setup
+After the tracked modules, the loader sources two optional, untracked files if they exist:
+- `local.zsh` — machine-specific settings that shouldn't be committed
+- `~/.secrets.env` — API keys and secrets, kept out of the repo
+
+## Installation
+
+Clone directly into your Zsh config directory:
+
+```sh
+git clone https://github.com/NoamFav/<repo>.git ~/.config/zsh
+```
+
+Then point `~/.zshrc` at the loader. The simplest approach is a symlink so edits to the repo are picked up live:
+
+```sh
+ln -sf ~/.config/zsh/.zshrc ~/.zshrc
+```
+
+Reload:
+
+```sh
+source ~/.zshrc
+```
+
+## Dependencies
+
+The config is built around a modern CLI toolset. Most external tools are guarded with `command -v`, so missing ones are skipped rather than throwing errors — but you'll get the intended experience only with them installed.
+
+**Core:** [Oh My Zsh](https://ohmyz.sh/) with `zsh-syntax-highlighting`, `zsh-autosuggestions`, `zsh-completions`, and `fzf-tab`.
+
+**Recommended tools** (install via Homebrew):
+- [`eza`](https://github.com/eza-community/eza) — modern `ls`
+- [`btop`](https://github.com/aristocratos/btop) — system monitor
+- [`fzf`](https://github.com/junegunn/fzf) — fuzzy finder
+- [`zoxide`](https://github.com/ajeetdsouza/zoxide) — smart `cd`
+- [`atuin`](https://github.com/atuinsh/atuin) — shell history
+- [`bat`](https://github.com/sharkdp/bat) — `cat` with highlighting
+- [`fastfetch`](https://github.com/fastfetch-cli/fastfetch) / [`onefetch`](https://github.com/o2sh/onefetch) — system / repo info
+- [`yazi`](https://github.com/sxyazi/yazi) — terminal file manager
+- [`fd`](https://github.com/sharkdp/fd) — modern `find`
+
+**Optional / context-specific:** `arduino-cli` + `jq` (Arduino helpers), `oh-my-posh` (prompt), `thefuck` (command correction), `lazygit`.
 
 ## Customization
 
-### Local Changes
-- Edit `local.zsh` for machine-specific customizations
-- This file is not tracked in git and won't be overwritten
+- **Machine-specific settings** → put them in `local.zsh`. It's gitignored and sourced automatically if present, so it won't be overwritten and won't pollute the repo.
+- **Module changes** → edit the relevant file directly; each is self-contained.
+- **New modules** → create the file in the appropriate folder and add its path to the `ZSH_MODULES` array in `.zshrc`.
 
-### Module Changes
-- Edit individual modules for specific functionality
-- Each module is self-contained and documented
+## License
 
-### Adding New Modules
-1. Create the new module file in the appropriate directory
-2. Add it to the `modules` array in `~/.zshrc`
-3. Source your configuration: `source ~/.zshrc`
-
-## Quick Commands
-
-- `zc` - Edit the main .zshrc file
-- `zs` - Reload ZSH configuration
-- `nv ~/.config/zsh/` - Browse all modules with Neovim
-
-## Troubleshooting
-
-If a module fails to load:
-1. Check the error message for the specific module
-2. Verify the file exists and has correct permissions
-3. Test the module in isolation: `source ~/.config/zsh/path/to/module.zsh`
-
-## Backup
-
-Your original `.zshrc` was backed up during the split process. Check for backup files in your home directory.
+MIT
