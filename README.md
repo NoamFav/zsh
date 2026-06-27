@@ -2,7 +2,7 @@
 
 A modular, macOS-focused Zsh configuration. The monolithic `.zshrc` is split into small, single-purpose modules that the loader sources in dependency order, so each piece of functionality lives in its own file and is easy to find, edit, or disable.
 
-> **Note:** This config is written for **macOS**. It assumes Homebrew, and several modules use Mac-only tooling (`osascript`, `pbpaste`/`pbcopy`, `diskutil`, BSD `sed`). It will *load* on Linux thanks to `command -v` guards on most external tools, but the Mac-specific aliases and functions won't work there.
+> **Note:** This config is written for **macOS**. It assumes Homebrew, and several modules use Mac-only tooling (`osascript`, `pbpaste`/`pbcopy`, `diskutil`, BSD `sed`). It will _load_ on Linux thanks to `command -v` guards on most external tools, but the Mac-specific aliases and functions won't work there.
 
 ## Structure
 
@@ -42,6 +42,7 @@ A modular, macOS-focused Zsh configuration. The monolithic `.zshrc` is split int
 The loader (`.zshrc`) sources modules in dependency order: **core** (environment, Oh My Zsh, completion) → **exports** (PATH, libraries) → **aliases** → **functions** → **hooks** → **external** tools. Anything that defines values others depend on loads first.
 
 After the tracked modules, the loader sources two optional, untracked files if they exist:
+
 - `local.zsh` — machine-specific settings that shouldn't be committed
 - `~/.secrets.env` — API keys and secrets, kept out of the repo
 
@@ -50,7 +51,7 @@ After the tracked modules, the loader sources two optional, untracked files if t
 Clone directly into your Zsh config directory:
 
 ```sh
-git clone https://github.com/NoamFav/<repo>.git ~/.config/zsh
+git clone https://github.com/NoamFav/zsh.git ~/.config/zsh
 ```
 
 Then point `~/.zshrc` at the loader. The simplest approach is a symlink so edits to the repo are picked up live:
@@ -72,6 +73,7 @@ The config is built around a modern CLI toolset. Most external tools are guarded
 **Core:** [Oh My Zsh](https://ohmyz.sh/) with `zsh-syntax-highlighting`, `zsh-autosuggestions`, `zsh-completions`, and `fzf-tab`.
 
 **Recommended tools** (install via Homebrew):
+
 - [`eza`](https://github.com/eza-community/eza) — modern `ls`
 - [`btop`](https://github.com/aristocratos/btop) — system monitor
 - [`fzf`](https://github.com/junegunn/fzf) — fuzzy finder
