@@ -1,0 +1,214 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "blue": "#7aa2f7",
+    "cyan": "#2ac3de",
+    "green": "#9ece6a",
+    "purple": "#bb9af7",
+    "red": "#f7768e",
+    "yellow": "#e0af68",
+    "comment": "#565f89"
+  },
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "foreground": "p:cyan",
+          "style": "plain",
+          "template": "\uf179 {{ .UserName }} ",
+          "type": "session"
+        },
+        {
+          "foreground": "p:blue",
+          "options": {
+            "folder_separator_icon": "/",
+            "style": "full"
+          },
+          "style": "plain",
+          "template": "\uf07b {{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "foreground": "p:purple",
+          "style": "plain",
+          "template": "{{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf0c7 {{ .StashCount }}{{ end }} ",
+          "options": {
+            "fetch_status": true,
+            "branch_icon": "\ue0a0 ",
+            "branch_identical_icon": "",
+            "mapped_branches": {
+              "feat/*": "\uf067 ",
+              "bug/*": "\uf188 "
+            }
+          },
+          "type": "git"
+        },
+        {
+          "type": "status",
+          "style": "plain",
+          "foreground_templates": [
+            "{{ if .Error }}p:red{{ else }}p:green{{ end }}"
+          ],
+          "template": "\ue23a{{ if .Error }} {{ if eq .Code 130 }}SIGINT{{ else if eq .Code 143 }}SIGTERM{{ else if eq .Code 137 }}SIGKILL{{ else }}{{ .Code }}{{ end }}{{ end }} ",
+          "options": {
+            "always_enabled": true
+          }
+        },
+        {
+          "type": "executiontime",
+          "style": "plain",
+          "foreground": "p:yellow",
+          "template": "\uf252 {{ .FormattedMs }} ",
+          "options": {
+            "threshold": 500
+          }
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "go",
+          "style": "plain",
+          "foreground": "p:cyan",
+          "template": "\ue627 {{ .Full }} ",
+          "options": {
+            "display_mode": "files"
+          }
+        },
+        {
+          "type": "node",
+          "style": "plain",
+          "foreground": "p:green",
+          "template": "\ue718 {{ .Full }} ",
+          "options": {
+            "display_mode": "files"
+          }
+        },
+        {
+          "type": "rust",
+          "style": "plain",
+          "foreground": "p:yellow",
+          "template": "\ue7a8 {{ .Full }} ",
+          "options": {
+            "display_mode": "files"
+          }
+        },
+        {
+          "type": "cmake",
+          "style": "plain",
+          "foreground": "p:red",
+          "template": "\uf1b3 {{ .Full }} ",
+          "options": {
+            "display_mode": "files"
+          }
+        },
+        {
+          "type": "lua",
+          "style": "plain",
+          "foreground": "p:blue",
+          "template": "\ue620 {{ .Full }} ",
+          "options": {
+            "display_mode": "files"
+          }
+        },
+        {
+          "type": "swift",
+          "style": "plain",
+          "foreground": "p:purple",
+          "template": "\ue755 {{ .Full }} ",
+          "options": {
+            "display_mode": "files"
+          }
+        },
+        {
+          "type": "java",
+          "style": "plain",
+          "foreground": "p:yellow",
+          "template": "\ue256 {{ .Full }} ",
+          "options": {
+            "display_mode": "files"
+          }
+        },
+        {
+          "type": "dotnet",
+          "style": "plain",
+          "foreground": "p:green",
+          "template": "\ue77f {{ .Full }} ",
+          "options": {
+            "display_mode": "files"
+          }
+        },
+        {
+          "type": "docker",
+          "style": "plain",
+          "foreground": "p:blue",
+          "template": "{{ if or (glob \"Dockerfile\") (glob \"docker-compose.yml\") (glob \"compose.yaml\") }}\uf308 {{ .Context }} {{ end }}"
+        },
+        {
+          "type": "npm",
+          "style": "plain",
+          "foreground": "p:red",
+          "template": "{{ if glob \"package-lock.json\" }}\ue71e {{ .Full }} {{ end }}"
+        },
+        {
+          "type": "pnpm",
+          "style": "plain",
+          "foreground": "p:yellow",
+          "template": "{{ if glob \"pnpm-lock.yaml\" }}\ue865 {{ .Full }} {{ end }}"
+        },
+        {
+          "type": "gradle",
+          "style": "plain",
+          "foreground": "p:green",
+          "template": "{{ if not .Error }}\ue660 {{ .Full }} {{ end }}"
+        },
+        {
+          "type": "react",
+          "style": "plain",
+          "foreground": "p:cyan",
+          "template": "{{ if not .Error }}\ue7ba {{ .Full }} {{ end }}"
+        },
+        {
+          "type": "tauri",
+          "style": "plain",
+          "foreground": "p:yellow",
+          "template": "{{ if not .Error }}\uf108 {{ .Full }} {{ end }}"
+        },
+        {
+          "type": "time",
+          "style": "plain",
+          "foreground": "p:comment",
+          "options": {
+            "time_format": "15:04:05"
+          },
+          "template": "\uf017 {{ .CurrentDate | date .Format }}"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "p:red",
+          "style": "plain",
+          "template": "\ue3bf ",
+          "type": "root"
+        },
+        {
+          "foreground": "p:purple",
+          "style": "plain",
+          "template": "$ ",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "version": 4
+}
