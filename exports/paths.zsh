@@ -35,4 +35,4 @@ export PATH="/opt/homebrew/Cellar/perl/5.40.2/bin:$PATH"
 export MANPATH="$HOME/.local/share/man:$MANPATH"
 export DXVK_LOG_LEVEL=none
 export WINEDLLOVERRIDES="d3d11,dxgi=n"
-export OMP_PATH="$HOME/.config/oh-my-posh/config-theme.toml"
+export OMP_PATH="$HOME/.config/zsh/external/oh-my-posh/config-theme.toml"
