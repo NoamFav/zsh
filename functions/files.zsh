@@ -67,3 +67,11 @@ batcopy() {
   (( ${#files} == 0 )) && return
   bat --color=always -- "${files[@]}" 2>/dev/null | pbcopy
 }
+
+goup() {
+  local bin pkg
+  for bin in "$(go env GOPATH)"/bin/*(N.x); do
+    pkg=$(go version -m "$bin" 2>/dev/null | awk '$1 == "path" {print $2}')
+    [[ -n "$pkg" ]] && go install "$pkg@latest"
+  done
+}
