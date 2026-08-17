@@ -16,7 +16,6 @@ ZSH_MODULES=(
   "core/environment"
   "core/oh-my-zsh"
   "core/completion"
-  "core/splash"
   "exports/paths"
   "exports/libraries"
   "aliases/system"
