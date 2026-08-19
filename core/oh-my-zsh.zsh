@@ -1,13 +1,10 @@
-# ╔══════════════════════════════════════════════════════════════════════════════╗
-# ║                           OH MY ZSH CONFIGURATION                            ║
-# ╚══════════════════════════════════════════════════════════════════════════════╝
+# ── Oh My Zsh ────────────────────────────────────────────────────────────────
 
-# Oh My Zsh configuration
 export ZSH="$HOME/.dev/oh-my-zsh"
 export ZSH_CUSTOM="$HOME/.dev/oh-my-zsh/custom"
 
-# Tokyo Night colors for zsh-syntax-highlighting (must be set before the
-# plugin loads below, since it only fills in styles that are still unset).
+# must be set before the plugin loads below, it only fills in styles that are
+# still unset
 typeset -gA ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#f7768e,bold'
 ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#bb9af7'
@@ -34,18 +31,16 @@ ZSH_HIGHLIGHT_STYLES[redirection]='fg=#e0af68'
 ZSH_HIGHLIGHT_STYLES[comment]='fg=#565f89'
 ZSH_HIGHLIGHT_STYLES[arg0]='fg=#7aa2f7'
 
-# Essential plugins for enhanced shell experience
 plugins=(
-    git                      # Git integration and aliases
-    zsh-syntax-highlighting  # Syntax highlighting for commands
-    zsh-autosuggestions     # Command suggestions based on history
-    zsh-completions         # Additional completions
-    fzf-tab                 # Replace default completion with fzf
+    git
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+    zsh-completions
+    fzf-tab # replaces the default completion menu with fzf
 )
 
-# Load forgit plugin if available (enhanced git experience with fzf)
+# optional, only sourced if forgit's actually installed via brew
 [[ -f $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh ]] && \
     source "$HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh"
 
-# Initialize Oh My Zsh
 source "$ZSH/oh-my-zsh.sh"

@@ -1,16 +1,12 @@
-# ╔══════════════════════════════════════════════════════════════════════════════╗
-# ║                               ARDUINO CONFIG                                 ║
-# ╚══════════════════════════════════════════════════════════════════════════════╝
+# ── Arduino ──────────────────────────────────────────────────────────────────
 
-# Arduino CLI dependency check
 if ! command -v arduino-cli >/dev/null || ! command -v fzf >/dev/null || ! command -v jq >/dev/null; then
     echo "⚠️  Arduino functions require: arduino-cli, fzf, jq"
 else
-    # Arduino environment variables
-    export ARD_FQBN=""  # Fully Qualified Board Name
-    export ARD_PORT=""  # Serial port
+    export ARD_FQBN="" # fully qualified board name
+    export ARD_PORT=""
 
-    # Only offer ports that actually have a matching board (FQBN present)
+    # only offer ports that actually have a matching board (FQBN present)
     _arduino_pick_port() {
       local line
       line="$(
@@ -32,7 +28,7 @@ else
       echo "=> Board: $ARD_FQBN"
     }
 
-    # Normalize a user-provided path (file or dir) to a *sketch root directory*
+    # normalizes a file or dir arg down to the sketch's root directory
     _arduino_pick_sketch() {
       local list
       if command -v fd >/dev/null; then
@@ -53,7 +49,6 @@ else
       printf '%s\n' "$list" | fzf --prompt='📝 Sketch > ' --height=60% --reverse
     }
 
-    # Compile (accept dir or file; normalize to dir)
     ard-c() {
       local in="${1:-}" sketch
       [[ -n "$ARD_FQBN" ]] || _arduino_pick_port || return 1
@@ -66,7 +61,6 @@ else
       arduino-cli compile --fqbn "$ARD_FQBN" "$sketch"
     }
 
-    # Upload (accept dir or file; normalize to dir)
     ard-u() {
       local in="${1:-}" sketch
       [[ -n "$ARD_FQBN" ]] || _arduino_pick_port || return 1
@@ -80,7 +74,7 @@ else
       arduino-cli upload -p "$ARD_PORT" --fqbn "$ARD_FQBN" "$sketch"
     }
 
-    # Manual fast paths still work; they can take a sketch *dir*
+    # fast paths for scripting: take fqbn/sketch directly, skip the fzf pickers
     ard-cb() { [[ $# -lt 2 ]] && { echo "Usage: ard-cb <fqbn> <sketch_dir|main.ino>"; return 1; }
                local s; s="$(_arduino_normalize_sketch "$2")" || { echo "Not a valid sketch: $2"; return 1; }
                arduino-cli compile --fqbn "$1" "$s"; }

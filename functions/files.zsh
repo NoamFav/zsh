@@ -1,8 +1,6 @@
-# ╔══════════════════════════════════════════════════════════════════════════════╗
-# ║                          FILE MANAGEMENT                                     ║
-# ╚══════════════════════════════════════════════════════════════════════════════╝
+# ── File management ─────────────────────────────────────────────────────────
 
-# Yazi file manager with directory change integration
+# cd's the shell to wherever yazi last navigated to, since yazi runs in its own process
 y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
     yazi "$@" --cwd-file="$tmp"
@@ -13,7 +11,6 @@ y() {
     rm -f -- "$tmp"
 }
 
-# Text replacement utility with validation and preview
 replace_text() {
     if [[ $# -ne 2 ]]; then
         echo "🔄 Usage: replace_text <old_string> <new_string>"
@@ -45,7 +42,6 @@ repo() {
   cd "$target"
 }
 
-# project tree quicklook
 ptree() { tree -L "${1:-2}" -d -I ".git"; }
 
 batcopy() {
@@ -68,6 +64,7 @@ batcopy() {
   bat --color=always -- "${files[@]}" 2>/dev/null | pbcopy
 }
 
+# reinstalls every Go binary on GOPATH at its latest version
 goup() {
   local bin pkg
   for bin in "$(go env GOPATH)"/bin/*(N.x); do

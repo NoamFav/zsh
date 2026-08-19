@@ -1,29 +1,22 @@
-# ╔══════════════════════════════════════════════════════════════════════════════╗
-# ║                          DEVELOPMENT TOOLS                                   ║
-# ╚══════════════════════════════════════════════════════════════════════════════╝
+# ── Development tools ───────────────────────────────────────────────────────
 
-# Modern C++ compilation with latest standards
-alias g++='g++ -std=c++23'              # GCC with C++23
-alias clang++='clang++ -std=c++23'      # Clang with C++23
+# always want the newer standard, not whatever the compiler defaults to
+alias g++='g++ -std=c++23'
+alias clang++='clang++ -std=c++23'
 
-# Java development
-alias mvnfx='mvn clean javafx:run'      # Maven JavaFX runner
+alias mvnfx='mvn clean javafx:run'
 
-# .NET development utilities
 alias dotnet-version="dotnet --version && msbuild --version"
 alias msbuild="/usr/local/share/dotnet/dotnet msbuild"
 
-# NPM workflow shortcuts
-alias nrd="npm run dev"                 # Development server
-alias nrb="npm run build"               # Build project
-alias nrs="npm run start"               # Start application
-alias nrt="npm run test"                # Run tests
-alias nru="npm run update"              # Update dependencies
-alias nrdp="npm run deploy"             # Deploy project
+# npm shortcuts
+alias nrd="npm run dev"
+alias nrb="npm run build"
+alias nrs="npm run start"
+alias nrt="npm run test"
+alias nru="npm run update"
+alias nrdp="npm run deploy"
 
-# Custom project scripts
-alias cmr='./run.sh'                    # Common run script
+alias cmr='./run.sh'
 
-# Whisper stream
 alias ws='whisper-stream -m ~/.models/whisper/ggml-large-v3-turbo.bin --step 1000 --length 5000 -vth 0.7 -t 8'
-

@@ -1,8 +1,5 @@
-# ╔══════════════════════════════════════════════════════════════════════════════╗
-# ║                         ONEFETCH INTEGRATION                                 ║
-# ╚══════════════════════════════════════════════════════════════════════════════╝
+# ── Onefetch integration ────────────────────────────────────────────────────
 
-# Auto-display repository info when entering git directories
 _onefetch_chpwd() {
     if [[ -d .git ]]; then
         onefetch
@@ -10,7 +7,6 @@ _onefetch_chpwd() {
     fi
 }
 
-# Interactive language selection for onefetch theming
 onelist() {
     echo "🎨 Select a language theme for onefetch"
     onefetch -l | fzf \
@@ -20,11 +16,8 @@ onelist() {
         --border=rounded
 }
 
-# ┌──────────────────────────────────────────────────────────────────────────────┐
-# │                        DYNAMIC WEB ALIASES                                   │
-# └──────────────────────────────────────────────────────────────────────────────┘
+# ── Dynamic web aliases ──────────────────────────────────────────────────────
 
-# Project-specific web aliases mapping
 typeset -gA web_aliases=(
     "Psycho"     "https://noamfav.github.io/Psycho"
     "Resume"     "https://noamfav.github.io/Resume"
@@ -32,7 +25,7 @@ typeset -gA web_aliases=(
     "NF-Software" "https://nf-software.com"
 )
 
-# Dynamic web alias based on current directory
+# rebinds `web` to whatever this project's page is, per directory (see hooks/directory.zsh)
 alias_web() {
     local project_name="${PWD##*/}"
     if [[ -n ${web_aliases[$project_name]} ]]; then
@@ -42,9 +35,7 @@ alias_web() {
     fi
 }
 
-# ┌──────────────────────────────────────────────────────────────────────────────┐
-# │                        ITERM2 FUNCTION CLOSE                                 │
-# └──────────────────────────────────────────────────────────────────────────────┘
+# ── iTerm2 ───────────────────────────────────────────────────────────────────
 
 closeiterm() {
   osascript -e 'if application id "com.googlecode.iterm2" is running then tell application id "com.googlecode.iterm2" to close (every window)'

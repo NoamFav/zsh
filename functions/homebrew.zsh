@@ -1,8 +1,5 @@
-# ╔══════════════════════════════════════════════════════════════════════════════╗
-# ║                          HOMEBREW UTILITIES                                  ║
-# ╚══════════════════════════════════════════════════════════════════════════════╝
+# ── Homebrew utilities ──────────────────────────────────────────────────────
 
-# Interactive Homebrew package browser for installed packages
 hb_installed() {
     echo "🍺 Browsing installed Homebrew packages..."
     brew list | fzf \
@@ -13,7 +10,6 @@ hb_installed() {
         --header="Use ↑↓ to navigate, Enter to select, Esc to quit"
 }
 
-# Interactive Homebrew package search for all available packages
 hb_search() {
     echo "🍺 Searching all available Homebrew packages..."
     brew search | fzf \
@@ -24,14 +20,12 @@ hb_search() {
         --header="Use ↑↓ to navigate, Enter to select, Esc to quit"
 }
 
-# SketchyBar control function with comprehensive management
-# Environment overrides: SB_BIN, SB_CONFIG, SB_MODE
+# env overrides: SB_BIN, SB_CONFIG, SB_MODE, SB_THEME_DIR
 sb() {
     local BIN="${SB_BIN:-/opt/homebrew/bin/sketchybar}"
     local CFG="${SB_CONFIG:-$HOME/.config/sketchybar/sketchybarrc}"
     local MODE="${SB_MODE:-auto}"
 
-    # Helper functions
     _exists() { command -v "$1" >/dev/null 2>&1; }
     _running() { pgrep -x sketchybar >/dev/null 2>&1; }
     _using_brew() {
@@ -42,7 +36,6 @@ sb() {
         return 0
     }
 
-    # Process management functions
     _start_manual() {
         if ! _exists "$BIN"; then echo "sb: sketchybar not found at $BIN"; return 1; fi
         nohup "$BIN" --config "$CFG" >/dev/null 2>&1 &

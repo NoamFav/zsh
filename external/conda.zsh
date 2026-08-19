@@ -1,8 +1,5 @@
-# ╔══════════════════════════════════════════════════════════════════════════════╗
-# ║                            CONDA SETUP                                       ║
-# ╚══════════════════════════════════════════════════════════════════════════════╝
+# ── Conda ────────────────────────────────────────────────────────────────────
 
-# Initialize Conda for Python environment management
 __conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [[ $? -eq 0 ]]; then
     eval "$__conda_setup"

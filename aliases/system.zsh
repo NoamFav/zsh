@@ -1,26 +1,21 @@
-# ╔══════════════════════════════════════════════════════════════════════════════╗
-# ║                           SYSTEM ESSENTIALS                                  ║
-# ╚══════════════════════════════════════════════════════════════════════════════╝
+# ── System essentials ───────────────────────────────────────────────────────
 
-# Enhanced system commands with modern alternatives
-alias ls='eza --icons always'           # Beautiful file listing with icons
-alias lt='eza --icons --tree'           # Tree view with icons
-alias top='btop'                        # Beautiful system monitor
-alias c='clear'                         # Quick clear screen
-alias e='exit'                          # Quick exit
-alias f='fuck'                          # TheFuck command correction
-alias ff='fastfetch'                    # System information display
-alias of='onefetch'                     # Git repository information
+alias ls='eza --icons always'
+alias lt='eza --icons --tree'
+alias top='btop'
+alias c='clear'
+alias e='exit'
+alias f='fuck' # thefuck
+alias ff='fastfetch'
+alias of='onefetch'
 alias fucking='sudo'
 
-# File management shortcuts
-alias dh='diskutil eject HDD'           # Eject external drive
-alias cdhist='zoxide query -l -s | bat' # Show directory navigation history
+alias dh='diskutil eject HDD'
+alias cdhist='zoxide query -l -s | bat'
 
-# Editor shortcuts
-alias nv='nvim'                         # Quick nvim launch
-alias zc="nv ~/.zshrc"                  # Edit ZSH configuration
-alias zs="source ~/.zshrc"              # Reload ZSH configuration
-alias omzc="nv ~/.oh-my-zsh"            # Edit Oh My Zsh configuration
+alias nv='nvim'
+alias zc="nv ~/.zshrc"
+alias zs="source ~/.zshrc"
+alias omzc="nv ~/.oh-my-zsh"
 alias line="pbpaste | wc -l"
 alias switch="sh ~/.config/aerospace/switch.sh"
