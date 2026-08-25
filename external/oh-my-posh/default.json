@@ -9,6 +9,11 @@
     "yellow": "#a2dcea",
     "comment": "#757679"
   },
+  "transient_prompt": {
+    "background": "transparent",
+    "foreground": "p:comment",
+    "template": "\uf07b {{ .Folder }} <{{ if gt .Code 0 }}p:red{{ else }}p:green{{ end }}>\ue23a{{ if gt .Code 0 }} {{ if eq .Code 130 }}SIGINT{{ else if eq .Code 143 }}SIGTERM{{ else if eq .Code 137 }}SIGKILL{{ else }}{{ .Code }}{{ end }}{{ end }}</>{{ if .Segments.ExecTime }} <p:yellow>\uf252 {{ .Segments.ExecTime.FormattedMs }}</>{{ end }} <p:purple>$</> "
+  },
   "blocks": [
     {
       "alignment": "left",
@@ -57,12 +62,11 @@
         },
         {
           "type": "executiontime",
+          "alias": "ExecTime",
           "style": "plain",
           "foreground": "p:yellow",
           "template": "\uf252 {{ .FormattedMs }} ",
-          "options": {
-            "threshold": 500
-          }
+          "options": { "threshold": 500 }
         }
       ],
       "type": "prompt"
