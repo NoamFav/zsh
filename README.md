@@ -1,10 +1,27 @@
-# ZSH Configuration
+<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/brand/banner-night.svg">
+  <img alt="zsh: Modular, macOS-focused Zsh configuration — one file per concern, sourced by a single loader." src=".github/brand/banner-paper.svg" width="100%">
+</picture>
+<br><br>
+<a href="#structure"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/brand/tab-structure-night.svg"><img alt="structure" src=".github/brand/tab-structure-paper.svg"></picture></a>
+<a href="#loading-order"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/brand/tab-loading-order-night.svg"><img alt="loading order" src=".github/brand/tab-loading-order-paper.svg"></picture></a>
+<a href="#installation"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/brand/tab-installation-night.svg"><img alt="installation" src=".github/brand/tab-installation-paper.svg"></picture></a>
+<a href="#dependencies"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/brand/tab-dependencies-night.svg"><img alt="dependencies" src=".github/brand/tab-dependencies-paper.svg"></picture></a>
+<a href="#customization"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/brand/tab-customization-night.svg"><img alt="customization" src=".github/brand/tab-customization-paper.svg"></picture></a>
+<a href="#license"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/brand/tab-license-night.svg"><img alt="license" src=".github/brand/tab-license-paper.svg"></picture></a>
+</div>
+
+<br>
 
 A modular, macOS-focused Zsh configuration. The monolithic `.zshrc` is split into small, single-purpose modules that the loader sources in dependency order, so each piece of functionality lives in its own file and is easy to find, edit, or disable.
 
 > **Note:** This config is written for **macOS**. It assumes Homebrew, and several modules use Mac-only tooling (`osascript`, `pbpaste`/`pbcopy`, `diskutil`, BSD `sed`). It will _load_ on Linux thanks to `command -v` guards on most external tools, but the Mac-specific aliases and functions won't work there.
 
-## Structure
+<p>
+<a name="structure"></a>
+<picture><source media="(prefers-color-scheme: dark)" srcset=".github/brand/section-structure-night.svg"><img alt="structure" src=".github/brand/section-structure-paper.svg" width="100%"></picture>
+</p>
 
 ```
 ~/.config/zsh/
@@ -37,7 +54,10 @@ A modular, macOS-focused Zsh configuration. The monolithic `.zshrc` is split int
 └── README.md
 ```
 
-## Loading Order
+<p>
+<a name="loading-order"></a>
+<picture><source media="(prefers-color-scheme: dark)" srcset=".github/brand/section-loading-order-night.svg"><img alt="loading order" src=".github/brand/section-loading-order-paper.svg" width="100%"></picture>
+</p>
 
 The loader (`.zshrc`) sources modules in dependency order: **core** (environment, Oh My Zsh, completion) → **exports** (PATH, libraries) → **aliases** → **functions** → **hooks** → **external** tools. Anything that defines values others depend on loads first.
 
@@ -46,7 +66,10 @@ After the tracked modules, the loader sources two optional, untracked files if t
 - `local.zsh` — machine-specific settings that shouldn't be committed
 - `~/.secrets.env` — API keys and secrets, kept out of the repo
 
-## Installation
+<p>
+<a name="installation"></a>
+<picture><source media="(prefers-color-scheme: dark)" srcset=".github/brand/section-installation-night.svg"><img alt="installation" src=".github/brand/section-installation-paper.svg" width="100%"></picture>
+</p>
 
 Clone directly into your Zsh config directory:
 
@@ -66,7 +89,10 @@ Reload:
 source ~/.zshrc
 ```
 
-## Dependencies
+<p>
+<a name="dependencies"></a>
+<picture><source media="(prefers-color-scheme: dark)" srcset=".github/brand/section-dependencies-night.svg"><img alt="dependencies" src=".github/brand/section-dependencies-paper.svg" width="100%"></picture>
+</p>
 
 The config is built around a modern CLI toolset. Most external tools are guarded with `command -v`, so missing ones are skipped rather than throwing errors — but you'll get the intended experience only with them installed.
 
@@ -86,12 +112,27 @@ The config is built around a modern CLI toolset. Most external tools are guarded
 
 **Optional / context-specific:** `arduino-cli` + `jq` (Arduino helpers), `oh-my-posh` (prompt), `thefuck` (command correction), `lazygit`.
 
-## Customization
+<p>
+<a name="customization"></a>
+<picture><source media="(prefers-color-scheme: dark)" srcset=".github/brand/section-customization-night.svg"><img alt="customization" src=".github/brand/section-customization-paper.svg" width="100%"></picture>
+</p>
 
 - **Machine-specific settings** → put them in `local.zsh`. It's gitignored and sourced automatically if present, so it won't be overwritten and won't pollute the repo.
 - **Module changes** → edit the relevant file directly; each is self-contained.
 - **New modules** → create the file in the appropriate folder and add its path to the `ZSH_MODULES` array in `.zshrc`.
 
-## License
+<p>
+<a name="license"></a>
+<picture><source media="(prefers-color-scheme: dark)" srcset=".github/brand/section-license-night.svg"><img alt="license" src=".github/brand/section-license-paper.svg" width="100%"></picture>
+</p>
 
 MIT
+
+<br>
+
+<a href="https://nf-software.com">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/brand/footer-night.svg">
+  <img alt="NF Software" src=".github/brand/footer-paper.svg" width="100%">
+</picture>
+</a>
