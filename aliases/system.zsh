@@ -4,7 +4,6 @@ alias ls='eza --icons always'
 alias lt='eza --icons --tree'
 alias top='btop'
 alias e='exit'
-alias f='fuck' # thefuck
 alias ff='fastfetch'
 alias of='onefetch'
 alias fucking='sudo'
