@@ -29,18 +29,8 @@ typeset -gA web_aliases=(
 alias_web() {
     local project_name="${PWD##*/}"
     if [[ -n ${web_aliases[$project_name]} ]]; then
-        alias web="echo '🌐 Opening ${project_name}...' && open -a Safari ${web_aliases[$project_name]}"
+        alias web="echo '🌐 Opening ${project_name}...' && xdg-open ${web_aliases[$project_name]}"
     else
         unalias web 2>/dev/null
     fi
-}
-
-# ── iTerm2 ───────────────────────────────────────────────────────────────────
-
-closeiterm() {
-  osascript -e 'if application id "com.googlecode.iterm2" is running then tell application id "com.googlecode.iterm2" to close (every window)'
-}
-
-quititerm() {
-  osascript -e 'if application id "com.googlecode.iterm2" is running then tell application id "com.googlecode.iterm2" to quit'
 }

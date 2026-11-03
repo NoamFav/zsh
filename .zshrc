@@ -15,19 +15,13 @@ ZSH_MODULES=(
   "core/oh-my-zsh"
   "core/completion"
   "exports/paths"
-  "exports/libraries"
   "aliases/system"
   "aliases/development"
   "aliases/git"
-  "aliases/multimedia"
-  "functions/homebrew"
   "functions/gh"
-  "functions/arduino"
   "functions/files"
   "functions/misc"
-  "functions/sketchybar"
   "hooks/directory"
-  "external/conda"
   "external/tools"
   "external/completions"
 )
@@ -41,12 +35,4 @@ for module in "${ZSH_MODULES[@]}"; do
   fi
 done
 
-# pnpm
-export PNPM_HOME="$HOME/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-# pnpm end
-#
-colorscript -r
+command -v colorscript >/dev/null 2>&1 && colorscript -r

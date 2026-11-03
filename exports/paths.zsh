@@ -1,34 +1,19 @@
-# ── Path management ─────────────────────────────────────────────────────────
+# ── Path management (42 cluster: Linux, no sudo, ~5GB home) ──────────────
 
-export PATH="/Applications/MATLAB_R2024b.app/bin:$PATH"
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export PATH="/opt/homebrew/opt/bison/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/Library/Python/3.12/bin:$PATH"
+# user-level installs only, nothing system-wide is writable here
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+[[ -d "$HOME/.cargo/bin" ]] && export PATH="$HOME/.cargo/bin:$PATH"
+[[ -d "$HOME/go/bin" ]] && export PATH="$HOME/go/bin:$PATH"
 export DOCKER_CONFIG="$HOME/.dev/docker"
 
-export DOTNET_ROOT="/usr/local/share/dotnet"
-export PATH="$DOTNET_ROOT:$PATH"
-export PATH="$PATH:$HOME/.dotnet/tools"
-export PATH="$PATH:/usr/local/share/dotnet"
-
-# msbuild SDK resolution
-export MSBuildSDKsPath="$DOTNET_ROOT/sdk/$(dotnet --version)/Sdks"
-export DOTNET_MSBUILD_SDK_RESOLVER_CLI_DIR="$DOTNET_ROOT"
-export DOTNET_MSBUILD_SDK_RESOLVER_SDKS="/usr/local/share/dotnet/sdk"
-export MSBUILD_EXE_PATH="/usr/local/share/dotnet/sdk/9.0.102/MSBuild.dll"
-export PATH="$MSBUILD_EXE_PATH:$PATH"
-
-export PATH="$HOME/.local/share/omnisharp:$PATH"
-export PATH="/Applications/Unity/Hub/Editor/6000.0.31f1/Unity.app/Contents/MacOS:$PATH"
-
-export JAVA_HOME=$(/usr/libexec/java_home -v 23)
-export PATH="/opt/homebrew/Cellar/perl/5.40.2/bin:$PATH"
+# home is quota'd but goinfre (machine-local, wiped now and then) isn't —
+# fine for caches, which can always be rebuilt
+if [[ -d "/goinfre/$USER" ]]; then
+    export XDG_CACHE_HOME="/goinfre/$USER/.cache"
+    mkdir -p "$XDG_CACHE_HOME"
+fi
 
 export MANPATH="$HOME/.local/share/man:$MANPATH"
-export DXVK_LOG_LEVEL=none
-export WINEDLLOVERRIDES="d3d11,dxgi=n"
 export OMP_PATH="$HOME/.config/zsh/external/oh-my-posh/default.json"
 export EZA_CONFIG_DIR="$HOME/.config/eza"
 

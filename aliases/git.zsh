@@ -17,7 +17,7 @@ alias lg='lazygit'
 alias rp='cd ~/Neoware'
 alias nlp='cd ~/Neoware/NLP_project'
 
-alias github='open -a Safari "https://github.com/NoamFav"'
+alias github='xdg-open "https://github.com/NoamFav"'
 
 alias apps='cd ~/Neoware/00-apps'
 alias webs='cd ~/Neoware/01-websites'

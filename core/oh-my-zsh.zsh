@@ -39,8 +39,8 @@ plugins=(
     fzf-tab # replaces the default completion menu with fzf
 )
 
-# optional, only sourced if forgit's actually installed via brew
-[[ -f $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh ]] && \
-    source "$HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh"
-
-source "$ZSH/oh-my-zsh.sh"
+if [[ -f "$ZSH/oh-my-zsh.sh" ]]; then
+    source "$ZSH/oh-my-zsh.sh"
+else
+    echo "⚠️  oh-my-zsh not found at $ZSH"
+fi

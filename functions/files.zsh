@@ -30,7 +30,7 @@ replace_text() {
     fi
 
     echo "🔄 Found ${#files[@]} file(s). Replacing '$old_string' with '$new_string'..."
-    printf '%s\n' "${files[@]}" | xargs sed -i '' "s/$old_string/$new_string/g"
+    printf '%s\n' "${files[@]}" | xargs sed -i "s/$old_string/$new_string/g"
     echo "✅ Replacement completed!"
 }
 
@@ -61,7 +61,7 @@ batcopy() {
   done
 
   (( ${#files} == 0 )) && return
-  bat --color=always -- "${files[@]}" 2>/dev/null | pbcopy
+  bat --color=always -- "${files[@]}" 2>/dev/null | xclip -selection clipboard
 }
 
 # reinstalls every Go binary on GOPATH at its latest version

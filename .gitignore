@@ -1,2 +1,5 @@
 .DS_Store
 local.zsh
+
+# completion cache, written next to .zshrc when ZDOTDIR points here
+.zcompdump*
