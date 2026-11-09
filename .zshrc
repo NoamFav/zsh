@@ -21,6 +21,7 @@ ZSH_MODULES=(
   "aliases/git"
   "aliases/multimedia"
   "functions/homebrew"
+  "functions/downloads"
   "functions/gh"
   "functions/arduino"
   "functions/files"
